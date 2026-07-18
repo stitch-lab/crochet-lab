@@ -1,0 +1,1700 @@
+
+html_content = '''<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Art of Crochet</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --beige-light: #F9F5F0;
+            --beige-medium: #E8DDD3;
+            --beige-dark: #D4C5B5;
+            --cream: #FFFDF9;
+            --text-dark: #2C2420;
+            --text-medium: #5A4F47;
+            --text-light: #8B7E74;
+            --accent: #C9A87C;
+            --white: #FFFFFF;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--cream);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: all 0.4s ease;
+            background: transparent;
+        }
+
+        nav.scrolled {
+            background: rgba(255, 253, 249, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            padding: 15px 60px;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        nav.scrolled .logo {
+            color: var(--text-dark);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--white);
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav.scrolled .nav-links a {
+            color: var(--text-dark);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
+                        url('https://images.unsplash.com/photo-1619250907682-bf3e8f8c4b6d?w=1920&q=80') center/cover;
+            z-index: -1;
+        }
+
+        .hero-content {
+            text-align: center;
+            color: var(--white);
+            z-index: 1;
+            animation: fadeInUp 1.2s ease;
+        }
+
+        .hero-content h1 {
+            font-size: 5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            font-weight: 300;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator svg {
+            width: 40px;
+            height: 40px;
+            fill: var(--white);
+            opacity: 0.8;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-15px); }
+            60% { transform: translateX(-50%) translateY(-7px); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Section Styles */
+        section {
+            padding: 120px 60px;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin-bottom: 60px;
+            line-height: 1.8;
+        }
+
+        /* Introduction Section */
+        .intro-section {
+            background: var(--white);
+        }
+
+        .split-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            margin-top: 60px;
+        }
+
+        .split-image {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+
+        .split-image img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .split-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .split-content h2 {
+            font-size: 3rem;
+            margin-bottom: 30px;
+            color: var(--text-dark);
+        }
+
+        .split-content p {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: var(--text-medium);
+            margin-bottom: 20px;
+        }
+
+        /* Timeline Section */
+        .timeline-section {
+            background: var(--beige-light);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 60px auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 3px;
+            height: 100%;
+            background: var(--beige-dark);
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 80px;
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            width: 45%;
+            padding: 30px;
+            background: var(--white);
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        }
+
+        .timeline-year {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: var(--accent);
+            border-radius: 50%;
+            border: 4px solid var(--white);
+            box-shadow: 0 0 0 3px var(--accent);
+        }
+
+        .timeline-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        /* Yarn Types Section */
+        .yarn-section {
+            background: var(--white);
+        }
+
+        .yarn-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .yarn-card {
+            background: var(--beige-light);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .yarn-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+        }
+
+        .yarn-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .yarn-card-content {
+            padding: 30px;
+        }
+
+        .yarn-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .yarn-card p {
+            color: var(--text-medium);
+            line-height: 1.7;
+        }
+
+        /* Hooks Section */
+        .hooks-section {
+            background: var(--beige-light);
+        }
+
+        .hooks-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .hook-card {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+
+        .hook-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.1);
+        }
+
+        .hook-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: var(--beige-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .hook-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .hook-card ul {
+            list-style: none;
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        .hook-card li {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--beige-medium);
+            color: var(--text-medium);
+        }
+
+        .hook-card li:last-child {
+            border-bottom: none;
+        }
+
+        /* Stitches Section */
+        .stitches-section {
+            background: var(--white);
+        }
+
+        .stitches-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .stitch-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            height: 350px;
+        }
+
+        .stitch-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .stitch-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .stitch-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 40px 30px 30px;
+            color: var(--white);
+        }
+
+        .stitch-overlay h3 {
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+        }
+
+        .stitch-overlay p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        /* Techniques Section */
+        .techniques-section {
+            background: var(--beige-light);
+        }
+
+        .techniques-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .technique-item {
+            flex: 1 1 calc(33.333% - 20px);
+            min-width: 300px;
+            background: var(--white);
+            padding: 40px;
+            border-radius: 20px;
+            transition: all 0.4s ease;
+        }
+
+        .technique-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+
+        .technique-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--accent);
+            opacity: 0.3;
+            margin-bottom: 15px;
+        }
+
+        .technique-item h3 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+        }
+
+        .technique-item p {
+            color: var(--text-medium);
+            line-height: 1.7;
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            background: var(--white);
+            padding: 120px 0;
+        }
+
+        .gallery-header {
+            padding: 0 60px;
+            margin-bottom: 60px;
+        }
+
+        .masonry-grid {
+            column-count: 4;
+            column-gap: 20px;
+            padding: 0 60px;
+        }
+
+        .gallery-item {
+            break-inside: avoid;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.4);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        /* Benefits Section */
+        .benefits-section {
+            background: var(--beige-light);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .benefit-card {
+            background: var(--white);
+            padding: 50px;
+            border-radius: 20px;
+            display: flex;
+            gap: 30px;
+            align-items: start;
+            transition: all 0.4s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.08);
+        }
+
+        .benefit-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--beige-light);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            flex-shrink: 0;
+        }
+
+        .benefit-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .benefit-content p {
+            color: var(--text-medium);
+            line-height: 1.7;
+        }
+
+        /* Process Section */
+        .process-section {
+            background: var(--white);
+        }
+
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 80px;
+            position: relative;
+        }
+
+        .process-steps::before {
+            content: '';
+            position: absolute;
+            top: 50px;
+            left: 10%;
+            right: 10%;
+            height: 3px;
+            background: var(--beige-medium);
+            z-index: 0;
+        }
+
+        .step {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-circle {
+            width: 100px;
+            height: 100px;
+            background: var(--white);
+            border: 4px solid var(--accent);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            transition: all 0.4s ease;
+        }
+
+        .step:hover .step-circle {
+            background: var(--accent);
+            color: var(--white);
+            transform: scale(1.1);
+        }
+
+        .step h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .step p {
+            color: var(--text-medium);
+            font-size: 0.95rem;
+            max-width: 200px;
+            margin: 0 auto;
+        }
+
+        /* Facts Section */
+        .facts-section {
+            background: var(--beige-light);
+        }
+
+        .facts-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .fact-card {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+
+        .fact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+
+        .fact-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .fact-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .fact-card p {
+            color: var(--text-medium);
+            line-height: 1.7;
+        }
+
+        /* Quote Section */
+        .quote-section {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+                        url('https://images.unsplash.com/photo-1584992236310-6edddc08acff?w=1920&q=80') center/cover fixed;
+            padding: 150px 60px;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .quote-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 500;
+            max-width: 900px;
+            margin: 0 auto 30px;
+            line-height: 1.4;
+        }
+
+        .quote-author {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            font-style: italic;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            background: var(--white);
+        }
+
+        .faq-container {
+            max-width: 900px;
+            margin: 60px auto 0;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            border-radius: 15px;
+            overflow: hidden;
+            background: var(--beige-light);
+        }
+
+        .faq-question {
+            padding: 30px 40px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: var(--beige-medium);
+        }
+
+        .faq-question h3 {
+            font-size: 1.3rem;
+            flex: 1;
+        }
+
+        .faq-toggle {
+            width: 40px;
+            height: 40px;
+            background: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+            margin-left: 20px;
+        }
+
+        .faq-answer {
+            padding: 0 40px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 40px 30px;
+            max-height: 500px;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer p {
+            color: var(--text-medium);
+            line-height: 1.8;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: var(--white);
+            padding: 80px 60px 40px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .footer-brand p {
+            color: rgba(255,255,255,0.7);
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: var(--white);
+        }
+
+        .social-link:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            color: var(--white);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 12px;
+        }
+
+        .footer-column a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 30px;
+            text-align: center;
+            color: rgba(255,255,255,0.5);
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .split-layout {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .masonry-grid {
+                column-count: 3;
+            }
+
+            .hooks-container,
+            .facts-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .process-steps {
+                flex-wrap: wrap;
+                gap: 40px;
+            }
+
+            .process-steps::before {
+                display: none;
+            }
+
+            .step {
+                flex: 1 1 calc(50% - 20px);
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 15px 30px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            section {
+                padding: 80px 30px;
+            }
+
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .masonry-grid {
+                column-count: 2;
+                padding: 0 30px;
+            }
+
+            .benefits-grid,
+            .hooks-container,
+            .facts-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .step {
+                flex: 1 1 100%;
+            }
+
+            .quote-text {
+                font-size: 2rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item,
+            .timeline-item:nth-child(even) {
+                flex-direction: column;
+                align-items: flex-start;
+                padding-left: 60px;
+            }
+
+            .timeline-content {
+                width: 100%;
+            }
+
+            .timeline-dot {
+                left: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .masonry-grid {
+                column-count: 1;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .technique-item {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <a href="#" class="logo">Crochet</a>
+        <ul class="nav-links">
+            <li><a href="#introduction">About</a></li>
+            <li><a href="#history">History</a></li>
+            <li><a href="#yarn">Yarn</a></li>
+            <li><a href="#stitches">Stitches</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#faq">FAQ</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <h1>The Art of Crochet</h1>
+            <p>Discover the timeless craft that transforms simple yarn into extraordinary works of art</p>
+        </div>
+        <div class="scroll-indicator">
+            <svg viewBox="0 0 24 24">
+                <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Introduction Section -->
+    <section class="intro-section" id="introduction">
+        <div class="split-layout fade-in">
+            <div class="split-image">
+                <img src="https://images.unsplash.com/photo-1605218427368-35b0f996d3e4?w=800&q=80" alt="Beautiful crochet work">
+            </div>
+            <div class="split-content">
+                <h2>What is Crochet?</h2>
+                <p>Crochet is a process of creating fabric by interlocking loops of yarn, thread, or strands of other materials using a crochet hook. The word "crochet" is derived from the French word "croche," meaning hook.</p>
+                <p>This versatile craft allows you to create everything from delicate lace doilies to cozy blankets, fashionable garments, and whimsical amigurumi toys. With just a hook and yarn, endless possibilities await.</p>
+                <p>Whether you're a complete beginner or an experienced crafter, crochet offers a meditative practice that combines creativity with tangible results. Each stitch tells a story, each project becomes a labor of love.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- History Section -->
+    <section class="timeline-section" id="history">
+        <div style="text-align: center;">
+            <h2 class="section-title fade-in">History of Crochet</h2>
+            <p class="section-subtitle fade-in" style="margin: 0 auto 60px;">Journey through time to discover the rich heritage of this beloved craft</p>
+        </div>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-year">1800s</div>
+                    <h3>Early Beginnings</h3>
+                    <p>Crochet emerged as a distinct craft in Europe during the early 19th century, though its origins may trace back even further to ancient civilizations.</p>
+                    <img src="https://images.unsplash.com/photo-1582562124811-c8ed1b31bc3e?w=600&q=80" alt="Vintage crochet" class="timeline-image">
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-year">1840s</div>
+                    <h3>Victorian Era Popularity</h3>
+                    <p>Crochet became immensely popular during the Victorian era, with intricate patterns published in women's magazines and pattern books becoming widely available.</p>
+                    <img src="https://images.unsplash.com/photo-1619250907682-bf3e8f8c4b6d?w=600&q=80" alt="Victorian crochet" class="timeline-image">
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-year">1920s</div>
+                    <h3>Golden Age</h3>
+                    <p>The 1920s marked crochet's golden age, with elaborate lace collars, decorative home items, and fashionable accessories becoming staples of wardrobes worldwide.</p>
+                    <img src="https://images.unsplash.com/photo-1584992236310-6edddc08acff?w=600&q=80" alt="1920s crochet fashion" class="timeline-image">
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-year">1970s</div>
+                    <h3>Bohemian Revival</h3>
+                    <p>The counterculture movement embraced crochet, making granny squares, colorful afghans, and bohemian fashion statements iconic symbols of the era.</p>
+                    <img src="https://images.unsplash.com/photo-1606293926075-69a00dbfde81?w=600&q=80" alt="1970s crochet" class="timeline-image">
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-year">Today</div>
+                    <h3>Modern Renaissance</h3>
+                    <p>Crochet has experienced a remarkable renaissance, with social media communities, innovative designers, and sustainable fashion bringing this ancient craft into the spotlight once again.</p>
+                    <img src="https://images.unsplash.com/photo-1615486511484-92e172cc4fe0?w=600&q=80" alt="Modern crochet" class="timeline-image">
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Yarn Types Section -->
+    <section class="yarn-section" id="yarn">
+        <div style="text-align: center;">
+            <h2 class="section-title fade-in">Types of Yarn</h2>
+            <p class="section-subtitle fade-in" style="margin: 0 auto 60px;">Choose the perfect fiber for your next masterpiece</p>
+        </div>
+
+        <div class="yarn-grid">
+            <div class="yarn-card fade-in">
+                <img src="https://images.unsplash.com/photo-1605218427368-35b0f996d3e4?w=600&q=80" alt="Cotton yarn">
+                <div class="yarn-card-content">
+                    <h3>Cotton</h3>
+                    <p>Breathable, durable, and perfect for warm weather projects. Cotton yarn is ideal for dishcloths, summer tops, and baby items due to its softness and washability.</p>
+                </div>
+            </div>
+
+            <div class="yarn-card fade-in">
+                <img src="https://images.unsplash.com/photo-1584992236310-6edddc08acff?w=600&q=80" alt="Acrylic yarn">
+                <div class="yarn-card-content">
+                    <h3>Acrylic</h3>
+                    <p>Affordable, versatile, and easy to care for. Acrylic yarn comes in countless colors and is perfect for beginners and everyday projects like blankets and scarves.</p>
+                </div>
+            </div>
+
+            <div class="yarn-card fade-in">
+                <img src="https://images.unsplash.com/photo-1619250907682-bf3e8f8c4b6d?w=600&q=80" alt="Wool yarn">
+                <div class="yarn-card-content">
+                    <h3>Wool</h3>
+                    <p>Naturally warm, elastic, and resilient. Wool is excellent for winter wearables, providing insulation even when wet, making it perfect for hats, sweaters, and socks.</p>
+                </div>
+            </div>
+
+            <div class="yarn-card fade-in">
+                <img src="https://images.unsplash.com/photo-1606293926075-69a00dbfde81?w=600&q=80" alt="Bamboo yarn">
+                <div class="yarn-card-content">
+                    <h3>Bamboo</h3>
+                    <p>Silky smooth with natural antibacterial properties. Bamboo yarn drapes beautifully and is eco-friendly, making it ideal for luxurious shawls and lightweight garments.</p>
+                </div>
+            </div>
+
+            <div class="yarn-card fade-in">
+                <img src="https://images.unsplash.com/photo-1582562124811-c8ed1b31bc3e?w=600&q=80" alt="Alpaca yarn">
+                <div class="yarn-card-content">
+                    <h3>Alpaca</h3>
+                    <p>Incredibly soft, warm, and hypoallergenic. Alpaca fiber creates luxurious, lightweight pieces with a beautiful halo, perfect for special occasion items.</p>
+                </div>
+            </div>
+
+            <div class="yarn-card fade-in">
+                <img src="https://images.unsplash.com/photo-1615486511484-92e172cc4fe0?w=600&q=80" alt="Merino wool">
+                <div class="yarn-card-content">
+                    <h3>Merino</h3>
+                    <p>Fine, soft, and temperature-regulating. Merino wool is gentle on sensitive skin and creates beautiful drape, making it perfect for wearable art and heirloom pieces.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hooks Section -->
+    <section class="hooks-section" id="hooks">
+        <div style="text-align: center;">
+            <h2 class="section-title fade-in">Crochet Hooks</h2>
+            <p class="section-subtitle fade-in" style="margin: 0 auto 60px;">The essential tools of the trade</p>
+        </div>
+
+        <div class="hooks-container">
+            <div class="hook-card fade-in">
+                <div class="hook-icon">🪝</div>
+                <h3>Materials</h3>
+                <ul>
+                    <li>Aluminum - Lightweight & affordable</li>
+                    <li>Steel - Durable & precise</li>
+                    <li>Wood - Warm & ergonomic</li>
+                    <li>Plastic - Budget-friendly option</li>
+                    <li>Bamboo - Eco-friendly choice</li>
+                </ul>
+            </div>
+
+            <div class="hook-card fade-in">
+                <div class="hook-icon">📏</div>
+                <h3>Sizes</h3>
+                <ul>
+                    <li>2.0-3.5mm - Fine lace work</li>
+                    <li>3.5-5.0mm - Standard projects</li>
+                    <li>5.0-8.0mm - Quick blankets</li>
+                    <li>8.0-15mm - Chunky textures</li>
+                    <li>15mm+ - Arm crochet</li>
+                </ul>
+            </div>
+
+            <div class="hook-card fade-in">
+                <div class="hook-icon">✨</div>
+                <h3>Uses</h3>
+                <ul>
+                    <li>Garments & accessories</li>
+                    <li>Home décor items</li>
+                    <li>Toys & amigurumi</li>
+                    <li>Lace & doilies</li>
+                    <li>Blankets & afghans</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Basic Stitches Section -->
+    <section class="stitches-section" id="stitches">
+        <div style="text-align: center;">
+            <h2 class="section-title fade-in">Basic Stitches</h2>
+            <p class="section-subtitle fade-in" style="margin: 0 auto 60px;">Master these fundamental techniques to unlock endless possibilities</p>
+        </div>
+
+        <div class="stitches-grid">
+            <div class="stitch-card fade-in">
+                <img src="https://images.unsplash.com/photo-1605218427368-35b0f996d3e4?w=600&q=80" alt="Chain stitch">
+                <div class="stitch-overlay">
+                    <h3>Chain Stitch</h3>
+                    <p>The foundation of all crochet work</p>
+                </div>
+            </div>
+
+            <div class="stitch-card fade-in">
+                <img src="https://images.unsplash.com/photo-1584992236310-6edddc08acff?w=600&q=80" alt="Slip stitch">
+                <div class="stitch-overlay">
+                    <h3>Slip Stitch</h3>
+                    <p>Perfect for joining and edging</p>
+                </div>
+            </div>
+
+            <div class="stitch-card fade-in">
+                <img src="https://images.unsplash.com/photo-1619250907682-bf3e8f8c4b6d?w=600&q=80" alt="Single crochet">
+                <div class="stitch-overlay">
+                    <h3>Single Crochet</h3>
+                    <p>Dense and sturdy basic stitch</p>
+                </div>
+            </div>
+
+            <div class="stitch-card fade-in">
+                <img src="https://images.unsplash.com/photo-1606293926075-69a00dbfde81?w=600&q=80" alt="Half double crochet">
+                <div class="stitch-overlay">
+                    <h3>Half Double</h3>
+                    <p>Versatile medium-height stitch</p>
+                </div>
+            </div>
+
+            <div class="stitch-card fade-in">
+                <img src="https://images.unsplash.com/photo-1582562124811-c8ed1b31bc3e?w=600&q=80" alt="Double crochet">
+                <div class="stitch-overlay">
+                    <h3>Double Crochet</h3>
+                    <p>Classic stitch for quick projects</p>
+                </div>
+            </div>
+
+            <div class="stitch-card fade-in">
+                <img src="https://images.unsplash.com/photo-1615486511484-92e172cc4fe0?w=600&q=80" alt="Treble crochet">
+                <div class="stitch-overlay">
+                    <h3>Treble Crochet</h3>
+                    <p>Tall stitch for open fabrics</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Techniques Section -->
+    <section class="techniques-section" id="techniques">
+        <div style="text-align: center;">
+            <h2 class="section-title fade-in">Advanced Techniques</h2>
+            <p class="section-subtitle fade-in" style="margin: 0 auto 60px;">Explore specialized methods to elevate your crochet skills</p>
+        </div>
+
+        <div class="techniques-flex">
+            <div class="technique-item fade-in">
+                <div class="technique-number">01</div>
+                <h3>Amigurumi</h3>
+                <p>The Japanese art of crocheting small, stuffed yarn creatures. Work in continuous rounds with tight stitches to create adorable three-dimensional toys and characters.</p>
+            </div>
+
+            <div class="technique-item fade-in">
+                <div class="technique-number">02</div>
+                <h3>Granny Squares</h3>
+                <p>Classic modular squares worked in rounds that can be joined together to create blankets, bags, and garments. Perfect for using up scrap yarn and creating colorful patchwork designs.</p>
+            </div>
+
+            <div class="technique-item fade-in">
+                <div class="technique-number">03</div>
+                <h3>Tunisian Crochet</h3>
+                <p>A hybrid technique between knitting and crochet using a long hook. Creates dense, textured fabric perfect for blankets, scarves, and structured garments with unique visual appeal.</p>
+            </div>
+
+            <div class="technique-item fade-in">
+                <div class="technique-number">04</div>
+                <h3>Lace Crochet</h3>
+                <p>Delicate, openwork patterns using fine yarn and small hooks. Creates elegant doilies, shawls, and decorative accents with intricate motifs and beautiful drape.</p>
+            </div>
+
+            <div class="technique-item fade-in">
+                <div class="technique-number">05</div>
+                <h3>Filet Crochet</h3>
+                <p>A mesh-based technique that creates images and patterns through filled and empty spaces. Ideal for creating pictorial designs, monograms, and geometric patterns in tablecloths and curtains.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section" id="gallery">
+        <div class="gallery-header">
+            <h2 class="section-title fade-in">Project Gallery</h2>
+            <p class="section-subtitle fade-in">Inspiration from the crochet community</p>
+        </div>
+
+        <div class="masonry-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1605218427368-35b0f996d3e4?w=600&q=80" alt="Crochet blanket">
+                <div class="gallery-overlay"></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1584992236310-6edddc08acff?w=600&q=80" alt="Crochet sweater">
+                <div class="gallery-overlay"></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1619250907682-bf3e8f8c4b6d?w=600&q=80" alt="Crochet bag">
+                <div class="gallery-overlay"></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1606293926075-69a00dbfde81?w=600&q=80" alt="Crochet hat">
+                <div class="gallery-overlay"></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1582562124811-c8ed1b31bc3e?w=600&q=80" alt="Crochet scarf">
+                <div class="gallery-overlay"></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1615486511484-92e172cc4fe0?w=600&q=80" alt="Crochet toy">
+                <div class="gallery-overlay"></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1605218427368-35b0f996d3e4?w=600&q=80" alt="Crochet pillow">
+                <div class="gallery-overlay"></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1584992236310-6edddc08acff?w=600&q=80" alt="Crochet shawl">
+                <div class="gallery-overlay"></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1619250907682-bf3e8f8c4b6d?w=600&q=80" alt="Crochet cardigan">
+                <div class="gallery-overlay"></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1606293926075-69a00dbfde81?w=600&q=80" alt="Crochet basket">
+                <div class="gallery-overlay"></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1582562124811-c8ed1b31bc3e?w=600&q=80" alt="Crochet dress">
+                <div class="gallery-overlay"></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1615486511484-92e172cc4fe0?w=600&q=80" alt="Crochet coasters">
+                <div class="gallery-overlay"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section" id="benefits">
+        <div style="text-align: center;">
+            <h2 class="section-title fade-in">Benefits of Crochet</h2>
+            <p class="section-subtitle fade-in" style="margin: 0 auto 60px;">More than just a craft - discover how crochet enriches your life</p>
+        </div>
+
+        <div class="benefits-grid">
+            <div class="benefit-card fade-in">
+                <div class="benefit-icon">🧠</div>
+                <div class="benefit-content">
+                    <h3>Mental Health</h3>
+                    <p>Crochet has been shown to reduce stress, anxiety, and depression. The repetitive motion induces a meditative state, releasing serotonin and promoting mindfulness and emotional well-being.</p>
+                </div>
+            </div>
+
+            <div class="benefit-card fade-in">
+                <div class="benefit-icon">🎨</div>
+                <div class="benefit-content">
+                    <h3>Creativity</h3>
+                    <p>Unleash your artistic expression through color combinations, texture choices, and pattern modifications. Crochet provides endless opportunities for creative exploration and personal style development.</p>
+                </div>
+            </div>
+
+            <div class="benefit-card fade-in">
+                <div class="benefit-icon">😌</div>
+                <div class="benefit-content">
+                    <h3>Relaxation</h3>
+                    <p>The rhythmic nature of crocheting creates a calming effect similar to meditation. Many crafters report entering a "flow state" where worries fade away and peace takes their place.</p>
+                </div>
+            </div>
+
+            <div class="benefit-card fade-in">
+                <div class="benefit-icon">🤲</div>
+                <div class="benefit-content">
+                    <h3>Fine Motor Skills</h3>
+                    <p>Crochet strengthens hand-eye coordination, dexterity, and finger strength. It's particularly beneficial for maintaining motor skills and can even aid in rehabilitation after injuries.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section" id="process">
+        <div style="text-align: center;">
+            <h2 class="section-title fade-in">Step-by-Step Process</h2>
+            <p class="section-subtitle fade-in" style="margin: 0 auto 60px;">From concept to creation - the journey of a crochet project</p>
+        </div>
+
+        <div class="process-steps">
+            <div class="step fade-in">
+                <div class="step-circle">💡</div>
+                <h3>Idea</h3>
+                <p>Find inspiration and choose your project</p>
+            </div>
+
+            <div class="step fade-in">
+                <div class="step-circle">🧶</div>
+                <h3>Yarn</h3>
+                <p>Select the perfect fiber and colors</p>
+            </div>
+
+            <div class="step fade-in">
+                <div class="step-circle">🪝</div>
+                <h3>Hook</h3>
+                <p>Choose the right tool for your project</p>
+            </div>
+
+            <div class="step fade-in">
+                <div class="step-circle">📋</div>
+                <h3>Pattern</h3>
+                <p>Follow instructions or create your own</p>
+            </div>
+
+            <div class="step fade-in">
+                <div class="step-circle">✨</div>
+                <h3>Finished Piece</h3>
+                <p>Enjoy your handmade creation</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interesting Facts Section -->
+    <section class="facts-section" id="facts">
+        <div style="text-align: center;">
+            <h2 class="section-title fade-in">Interesting Facts</h2>
+            <p class="section-subtitle fade-in" style="margin: 0 auto 60px;">Fascinating insights about the world of crochet</p>
+        </div>
+
+        <div class="facts-grid">
+            <div class="fact-card fade-in">
+                <div class="fact-icon">🏆</div>
+                <h3>World Records</h3>
+                <p>The largest crochet blanket measured over 16,000 square feet! Meanwhile, the smallest crochet chain was made with thread thinner than human hair, showcasing the incredible range of this craft.</p>
+            </div>
+
+            <div class="fact-card fade-in">
+                <div class="fact-icon">🌍</div>
+                <h3>Crochet Around the World</h3>
+                <p>While often associated with Europe, crochet-like techniques have been found in ancient Middle Eastern, South American, and Chinese textiles, suggesting independent development across cultures.</p>
+            </div>
+
+            <div class="fact-card fade-in">
+                <div class="fact-icon">⭐</div>
+                <h3>Famous Crocheters</h3>
+                <p>Queen Victoria was an avid crocheter who created numerous charity items. Today, celebrities like Julia Roberts, Cameron Diaz, and Sarah Jessica Parker are known crochet enthusiasts.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote Section -->
+    <section class="quote-section">
+        <blockquote class="quote-text fade-in">
+            "Crochet is not just about creating something beautiful. It's about creating something meaningful, one stitch at a time."
+        </blockquote>
+        <p class="quote-author fade-in">— Anonymous Crochet Artist</p>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section" id="faq">
+        <div style="text-align: center;">
+            <h2 class="section-title fade-in">Frequently Asked Questions</h2>
+            <p class="section-subtitle fade-in" style="margin: 0 auto 60px;">Common questions answered for crochet enthusiasts</p>
+        </div>
+
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Is crochet difficult to learn?</h3>
+                    <div class="faq-toggle">+</div>
+                </div>
+                <div class="faq-answer">
+                    <p>Crochet is actually one of the easier fiber arts to learn! With just a few basic stitches, you can create beautiful projects. Most beginners can master the fundamentals within a few hours of practice. The key is starting with simple projects and being patient with yourself as you develop muscle memory.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>What's the difference between knitting and crochet?</h3>
+                    <div class="faq-toggle">+</div>
+                </div>
+                <div class="faq-answer">
+                    <p>The main differences are the tools and techniques. Crochet uses one hook and typically works with one active loop at a time, while knitting uses two needles and keeps multiple loops active simultaneously. Crochet tends to create thicker, more textured fabric and is generally considered easier to fix mistakes in since you only have one live stitch.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>How much does it cost to start crocheting?</h3>
+                    <div class="faq-toggle">+</div>
+                </div>
+                <div class="faq-answer">
+                    <p>You can start crocheting for under $20! A basic aluminum hook set costs around $10-15, and a skein of acrylic yarn is typically $3-5. As you advance, you might invest in higher-quality hooks and specialty yarns, but the barrier to entry is very low compared to many other hobbies.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Can I make money from crocheting?</h3>
+                    <div class="faq-toggle">+</div>
+                </div>
+                <div class="faq-answer">
+                    <p>Absolutely! Many crocheters sell their creations at craft fairs, online marketplaces like Etsy, or through social media. You can also teach classes, write patterns, create video tutorials, or offer custom commission work. While it takes time to build a customer base, crochet can definitely become a profitable side business or even full-time career.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>How do I choose the right yarn for my project?</h3>
+                    <div class="faq-toggle">+</div>
+                </div>
+                <div class="faq-answer">
+                    <p>Consider the item's purpose first. For baby items, choose soft, washable fibers like cotton or acrylic. For warm winter wearables, wool or alpaca are excellent. Check the yarn label for recommended hook size and care instructions. When starting out, medium-weight (worsted) acrylic yarn is forgiving and easy to work with.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h2>The Art of Crochet</h2>
+                <p>Celebrating the timeless craft of crochet and inspiring creators worldwide. Join our community of passionate makers and discover the joy of handmade.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link">f</a>
+                    <a href="#" class="social-link">in</a>
+                    <a href="#" class="social-link">ig</a>
+                    <a href="#" class="social-link">pt</a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#introduction">About Crochet</a></li>
+                    <li><a href="#history">History</a></li>
+                    <li><a href="#yarn">Yarn Guide</a></li>
+                    <li><a href="#stitches">Basic Stitches</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="#">Free Patterns</a></li>
+                    <li><a href="#">Video Tutorials</a></li>
+                    <li><a href="#">Yarn Calculator</a></li>
+                    <li><a href="#">Hook Size Guide</a></li>
+                    <li><a href="#">Care Instructions</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="#">Email Us</a></li>
+                    <li><a href="#">Newsletter</a></li>
+                    <li><a href="#">Workshops</a></li>
+                    <li><a href="#">Collaborations</a></li>
+                    <li><a href="#">Support</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 The Art of Crochet. All rights reserved. Crafted with love and yarn.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in, .timeline-item').forEach(el => {
+            observer.observe(el);
+        });
+
+        // FAQ accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', function() {
+                const item = this.parentElement;
+                const isActive = item.classList.contains('active');
+                
+                // Close all items
+                document.querySelectorAll('.faq-item').forEach(faq => {
+                    faq.classList.remove('active');
+                });
+                
+                // Open clicked item if it wasn't active
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>'''
+
+# Save to file
+with open('/tmp/crochet_website.html', 'w') as f:
+    f.write(html_content)
+
+print("HTML file created successfully!")
+print(f"File size: {len(html_content)} characters")
+
+ # Result 
+HTML file created successfully!
+File size: 56783 characters
