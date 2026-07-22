@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Casa dei Fiori | Fiber & Form</title>
+    <title>Crochet Atelier | Fiber & Form</title>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -12,7 +12,6 @@
             --accent-clay: #A67B5B;
             --accent-sage: #8A9A8D;
             --white: #FFFFFF;
-            --fmn-bg: #1A1C1D; /* Lightened from #000203 */
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -111,6 +110,17 @@
         .yarn-text h3 { font-size: 2rem; margin-bottom: 15px; }
         .yarn-text p { font-size: 0.95rem; line-height: 1.8; color: #555; }
 
+        /* --- Signature Piece (MOVED AFTER BAMBOO SILK) --- */
+        .feature-block {
+            padding: 80px 60px; background: var(--bg-paper);
+            display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+            align-items: center; max-width: 1300px; margin: 0 auto;
+        }
+        .feature-img-wrap { height: 550px; overflow: hidden; border-radius: 4px; }
+        .feature-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+        .feature-text h2 { font-size: 3rem; line-height: 1; margin-bottom: 25px; }
+        .feature-text p { font-size: 1rem; line-height: 1.8; color: #444; margin-bottom: 18px; }
+
         /* --- Momma & Baby Collection --- */
         .collection-section {
             padding: 80px 60px; background: var(--white);
@@ -130,17 +140,6 @@
             letter-spacing: 0.15em; color: var(--accent-clay);
         }
 
-        /* --- Signature Piece (TEXT LEFT, PHOTO RIGHT) --- */
-        .feature-block {
-            padding: 80px 60px; background: var(--bg-paper);
-            display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
-            align-items: center; max-width: 1300px; margin: 0 auto;
-        }
-        .feature-img-wrap { height: 550px; overflow: hidden; border-radius: 4px; }
-        .feature-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
-        .feature-text h2 { font-size: 3rem; line-height: 1; margin-bottom: 25px; }
-        .feature-text p { font-size: 1rem; line-height: 1.8; color: #444; margin-bottom: 18px; }
-
         /* --- Cardigans (PHOTO LEFT, TEXT RIGHT, SAME SIZE) --- */
         .cardigan-feature {
             padding: 80px 60px; background: var(--white);
@@ -157,6 +156,44 @@
         }
         .stat-item h4 { font-size: 1.8rem; color: var(--accent-clay); margin-bottom: 4px; }
         .stat-item span { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.2em; color: #888; }
+
+        /* --- Headbands & Hair Accessories (UPDATED: SINGLE IMAGE RIGHT, FAIRY TEXT LEFT) --- */
+        .headband-section {
+            padding: 80px 60px; background: var(--bg-paper);
+            max-width: 1300px; margin: 0 auto;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+            align-items: start;
+        }
+        .headband-text { padding-top: 40px; }
+        .headband-text h2 { font-size: 3rem; line-height: 1; margin-bottom: 25px; }
+        .headband-text p { font-size: 1rem; line-height: 1.9; color: #444; margin-bottom: 18px; }
+        
+        .headband-image-wrap {
+            position: relative;
+            /* Increased top margin so head/accessory is fully visible */
+            margin-top: -60px; 
+        }
+        .headband-image-wrap img {
+            width: 100%; height: auto; display: block;
+            border-radius: 4px;
+        }
+
+        /* --- Lilies (MOVED BEFORE TULIPS) --- */
+        .lily-block {
+            padding: 80px 60px; background: var(--white);
+            display: flex; justify-content: space-between; align-items: flex-end;
+            max-width: 1300px; margin: 0 auto;
+        }
+        .lily-images { display: flex; }
+        .lily-img {
+            width: 300px; height: 440px; object-fit: cover; 
+            border-radius: 180px 180px 0 0; border: 8px solid var(--white);
+        }
+        .lily-img:first-child { margin-right: -45px; z-index: 1; transform: translateY(25px); }
+        .lily-img:last-child { z-index: 2; }
+        .lily-text { max-width: 420px; padding-bottom: 25px; }
+        .lily-text h2 { font-size: 3rem; margin-bottom: 25px; }
+        .lily-text p { font-size: 0.95rem; line-height: 1.8; color: #555; }
 
         /* --- Tulips (LARGER POLAROID MARGINS) --- */
         .tulip-section {
@@ -191,24 +228,30 @@
             width: 100%; height: 100%; object-fit: cover; display: block;
         }
 
-        /* --- Forget Me Not (LIGHTER BG + VIDEO STARTS AT 3S) --- */
+        /* --- Forget Me Not (WHITE BG + NEW VIDEO + TULIP-STYLE FRAME) --- */
         .fmn-section {
-            padding: 80px 60px; background: var(--fmn-bg);
+            padding: 80px 60px; background: var(--white);
             max-width: 1300px; margin: 0 auto;
             display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
             align-items: start;
         }
         .fmn-left { display: flex; flex-direction: column; gap: 40px; }
-        .fmn-text h2 { font-size: 3rem; line-height: 1; margin-bottom: 25px; color: var(--white); }
-        .fmn-text p { font-size: 1rem; line-height: 1.8; color: rgba(255,255,255,0.75); margin-bottom: 18px; }
-        .fmn-left .section-label { color: var(--accent-sage); }
+        .fmn-text h2 { font-size: 3rem; line-height: 1; margin-bottom: 25px; color: var(--text-ink); }
+        .fmn-text p { font-size: 1rem; line-height: 1.8; color: #444; margin-bottom: 18px; }
+        .fmn-left .section-label { color: var(--accent-clay); }
         
-        .fmn-photo-narrow {
-            width: 100%; height: 480px; overflow: hidden;
-            border-radius: 4px; align-self: center;
+        .fmn-polaroid {
+            max-width: 520px; padding: 30px; background: var(--white);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+            transform: rotate(1deg); align-self: center;
         }
-        .fmn-photo-narrow img {
-            width: 100%; height: 100%; object-fit: cover; display: block;
+        .fmn-polaroid img {
+            width: 100%; height: 420px; object-fit: cover; display: block;
+        }
+        .fmn-polaroid-caption {
+            text-align: center; margin-top: 20px;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic; font-size: 1.2rem; color: #5C554F;
         }
 
         .fmn-video-vertical {
@@ -218,23 +261,6 @@
         .fmn-video-vertical video {
             width: 100%; height: 100%; object-fit: cover; display: block;
         }
-
-        /* --- Lilies --- */
-        .lily-block {
-            padding: 80px 60px; background: var(--white);
-            display: flex; justify-content: space-between; align-items: flex-end;
-            max-width: 1300px; margin: 0 auto;
-        }
-        .lily-images { display: flex; }
-        .lily-img {
-            width: 300px; height: 440px; object-fit: cover; 
-            border-radius: 180px 180px 0 0; border: 8px solid var(--white);
-        }
-        .lily-img:first-child { margin-right: -45px; z-index: 1; transform: translateY(25px); }
-        .lily-img:last-child { z-index: 2; }
-        .lily-text { max-width: 420px; padding-bottom: 25px; }
-        .lily-text h2 { font-size: 3rem; margin-bottom: 25px; }
-        .lily-text p { font-size: 0.95rem; line-height: 1.8; color: #555; }
 
         /* --- Pillows Section --- */
         .pillow-section {
@@ -316,7 +342,8 @@
             .yarn-item, .yarn-item:nth-child(even) { grid-template-columns: 1fr; direction: ltr; }
             .yarn-img-wrap img { height: 300px; }
             .collection-grid { grid-template-columns: 1fr; max-width: 350px; }
-            .feature-block, .cardigan-feature, .tulip-section, .fmn-section { grid-template-columns: 1fr; }
+            .feature-block, .cardigan-feature, .headband-section, .tulip-section, .fmn-section { grid-template-columns: 1fr; }
+            .headband-image-wrap { margin-top: 0; }
             .tulip-video-vertical, .fmn-video-vertical { min-height: 400px; position: static; }
             .lily-block { flex-direction: column; align-items: center; gap: 40px; }
             .pillow-layout { grid-template-columns: 1fr; }
@@ -328,16 +355,15 @@
             .nav-links { display: none; }
             .hero-sub { left: 25px; bottom: 25px; }
             section, .yarn-flow, .collection-section, .feature-block, 
-            .cardigan-feature, .tulip-section, .fmn-section, .lily-block, .pillow-section, .timeline-flow, .organic-footer { padding: 60px 25px; }
-            .cardigan-text, .feature-text, .tulip-text, .fmn-text { padding: 0 25px; }
+            .cardigan-feature, .headband-section, .lily-block, .tulip-section, .fmn-section, .pillow-section, .timeline-flow, .organic-footer { padding: 60px 25px; }
+            .cardigan-text, .feature-text, .tulip-text, .fmn-text, .headband-text { padding: 0 25px; }
             .section-title, .yarn-text h3, .feature-text h2, .cardigan-text h2,
-            .tulip-text h2, .fmn-text h2, .lily-text h2, .pillow-text-block h3 { font-size: 2.2rem; }
+            .headband-text h2, .lily-text h2, .tulip-text h2, .fmn-text h2, .pillow-text-block h3 { font-size: 2.2rem; }
             .organic-footer::before { height: 80px; top: -40px; }
             .footer-quote { font-size: 1.6rem; }
             .pillow-video-wrap, .tulip-video-vertical, .fmn-video-vertical { height: 300px; min-height: auto; }
-            .tulip-polaroid { max-width: 100%; padding: 20px; }
-            .tulip-polaroid img { height: 300px; }
-            .fmn-photo-narrow { height: 350px; }
+            .tulip-polaroid, .fmn-polaroid { max-width: 100%; padding: 20px; }
+            .tulip-polaroid img, .fmn-polaroid img { height: 300px; }
         }
     </style>
 </head>
@@ -345,11 +371,10 @@
 
     <!-- NAVIGATION -->
     <nav id="navbar">
-        <div class="logo serif">Casa dei Fiori.</div>
+        <div class="logo serif">Atelier.</div>
         <ul class="nav-links">
             <li><a href="#fibers">Fibers</a></li>
             <li><a href="#collections">Collections</a></li>
-            <li><a href="#signature">Signature</a></li>
             <li><a href="#botanicals">Botanicals</a></li>
             <li><a href="#pillows">Pillows</a></li>
             <li><a href="#timeline">History</a></li>
@@ -407,6 +432,19 @@
         </div>
     </section>
 
+    <!-- SIGNATURE PIECE (MOVED HERE - AFTER BAMBOO SILK) -->
+    <section class="feature-block" id="signature">
+        <div class="feature-text">
+            <span class="section-label">Spotlight</span>
+            <h2 class="serif">The Signature Piece</h2>
+            <p>This piece was designed for the coldest mornings and the quietest evenings. The dense stitch pattern traps body heat while the natural alpaca fibers create an insulating barrier against wind and chill. It doesn't just cover you — it holds warmth close to your skin like a second layer.</p>
+            <p>The oversized silhouette allows for layering over thick sweaters without restriction, while the high collar can be folded up to protect your neck from biting cold. This is crochet as functional art — beautiful enough to display, warm enough to live in.</p>
+        </div>
+        <div class="feature-img-wrap">
+            <img src="https://cdn.shopify.com/s/files/1/0670/9549/4743/files/56A51847-EC35-40AC-AB17-3B484C640044.jpg?v=1784737037" alt="Signature Piece">
+        </div>
+    </section>
+
     <!-- MOMMA & BABY COLLECTION -->
     <section class="collection-section" id="collections">
         <span class="section-label">Curated Sets</span>
@@ -428,19 +466,6 @@
         </div>
     </section>
 
-    <!-- SIGNATURE PIECE (TEXT LEFT, PHOTO RIGHT) -->
-    <section class="feature-block" id="signature">
-        <div class="feature-text">
-            <span class="section-label">Spotlight</span>
-            <h2 class="serif">The Signature Piece</h2>
-            <p>This piece was designed for the coldest mornings and the quietest evenings. The dense stitch pattern traps body heat while the natural alpaca fibers create an insulating barrier against wind and chill. It doesn't just cover you — it holds warmth close to your skin like a second layer.</p>
-            <p>The oversized silhouette allows for layering over thick sweaters without restriction, while the high collar can be folded up to protect your neck from biting cold. This is crochet as functional art — beautiful enough to display, warm enough to live in.</p>
-        </div>
-        <div class="feature-img-wrap">
-            <img src="https://cdn.shopify.com/s/files/1/0670/9549/4743/files/56A51847-EC35-40AC-AB17-3B484C640044.jpg?v=1784737037" alt="Signature Piece">
-        </div>
-    </section>
-
     <!-- CARDIGANS (PHOTO LEFT, TEXT RIGHT, SAME SIZE) -->
     <section class="cardigan-feature">
         <div class="cardigan-img-wrap">
@@ -456,6 +481,33 @@
                 <div class="stat-item"><h4 class="serif">100%</h4><span>Natural Fibers</span></div>
                 <div class="stat-item"><h4 class="serif">0</h4><span>Machines Used</span></div>
             </div>
+        </div>
+    </section>
+
+    <!-- HEADBANDS & HAIR ACCESSORIES (UPDATED: SINGLE IMAGE RIGHT, FAIRY TEXT LEFT) -->
+    <section class="headband-section" id="headbands">
+        <div class="headband-text">
+            <span class="section-label">Accessories</span>
+            <h2 class="serif">The Enchanted Crown</h2>
+            <p>Once upon a time, in a garden where morning dew still clung to petals, a tiny crown was woven from threads of moonlight and wildflower stems. Each loop was stitched with whispered wishes — for courage, for kindness, for the quiet magic that lives in ordinary moments.</p>
+            <p>This headband is not merely an accessory. It is a spell cast in yarn, designed to rest gently upon the brow like a secret only the wearer knows. Whether worn beneath a veil of curls or framing a face turned toward the sun, it carries the memory of forests, of starlit paths, of stories yet untold. To wear it is to remember that you, too, are part of the enchantment.</p>
+        </div>
+        <div class="headband-image-wrap">
+            <img src="https://cdn.shopify.com/s/files/1/0670/9549/4743/files/98613671-C23F-4DD1-96F2-3C7C9B5DF021.jpg?v=1784758527" alt="Enchanted Crochet Headband">
+        </div>
+    </section>
+
+    <!-- LILIES (MOVED BEFORE TULIPS) -->
+    <section class="lily-block">
+        <div class="lily-images">
+            <img class="lily-img" src="https://cdn.shopify.com/s/files/1/0670/9549/4743/files/IMG_4980.heic?v=1784737035" alt="Lily Detail">
+            <img class="lily-img" src="https://cdn.shopify.com/s/files/1/0670/9549/4743/files/IMG_4970.heic?v=1784737034" alt="Lily Arrangement">
+        </div>
+        <div class="lily-text">
+            <span class="section-label">Botanical Series</span>
+            <h2 class="serif">Botanical Lilies</h2>
+            <p>Lilies represent purity and devotion. Crafted using fine cotton thread and steel hooks to achieve the delicate veining visible on each petal surface.</p>
+            <p>The stamens are hand-formed from embroidery floss and secured with tiny French knots at the center. Each lily takes approximately four hours to complete.</p>
         </div>
     </section>
 
@@ -480,7 +532,7 @@
         </div>
     </section>
 
-    <!-- FORGET ME NOT (LIGHTER BG + VIDEO STARTS AT 3S) -->
+    <!-- FORGET ME NOT (WHITE BG + NEW VIDEO + TULIP-STYLE FRAME) -->
     <section class="fmn-section">
         <div class="fmn-left">
             <div class="fmn-text">
@@ -489,29 +541,15 @@
                 <p>Named for the tiny blue flowers that symbolize enduring memory and true love. These miniature blooms are crocheted with lace-weight cotton thread and a 1.5mm steel hook, requiring a steadiness of hand that only comes with years of practice.</p>
                 <p>Each flower head contains over 200 individual stitches, each one placed to replicate the delicate veining of a real forget-me-not petal. They are assembled into clusters that can be worn as hair accessories, pinned to lapels, or arranged in small vases as permanent botanical art.</p>
             </div>
-            <div class="fmn-photo-narrow">
+            <div class="fmn-polaroid">
                 <img src="https://cdn.shopify.com/s/files/1/0670/9549/4743/files/IMG_3312.heic?v=1784737033" alt="Forget Me Not Detail">
+                <div class="fmn-polaroid-caption">Delicate by design</div>
             </div>
         </div>
         <div class="fmn-video-vertical">
-            <!-- Added #t=3 to start video at 3rd second -->
             <video autoplay muted loop playsinline>
-                <source src="https://cdn.shopify.com/videos/c/o/v/3ae1d6e117e7420992339436ee4dbc56.mov#t=3" type="video/mp4">
+                <source src="https://cdn.shopify.com/videos/c/o/v/a57fd290ffff4827b5f177d2cf7d6ea7.mov#t=3" type="video/mp4">
             </video>
-        </div>
-    </section>
-
-    <!-- LILIES -->
-    <section class="lily-block">
-        <div class="lily-images">
-            <img class="lily-img" src="https://cdn.shopify.com/s/files/1/0670/9549/4743/files/IMG_4980.heic?v=1784737035" alt="Lily Detail">
-            <img class="lily-img" src="https://cdn.shopify.com/s/files/1/0670/9549/4743/files/IMG_4970.heic?v=1784737034" alt="Lily Arrangement">
-        </div>
-        <div class="lily-text">
-            <span class="section-label">Botanical Series</span>
-            <h2 class="serif">Botanical Lilies</h2>
-            <p>Lilies represent purity and devotion. Crafted using fine cotton thread and steel hooks to achieve the delicate veining visible on each petal surface.</p>
-            <p>The stamens are hand-formed from embroidery floss and secured with tiny French knots at the center. Each lily takes approximately four hours to complete.</p>
         </div>
     </section>
 
@@ -580,7 +618,7 @@
             <p class="footer-quote">"Every stitch is a breath. Every piece is a story."</p>
             <a href="mailto:your@email.com" class="footer-cta">Begin Your Commission →</a>
             <div class="footer-bottom">
-                © 2026 Casa dei Fiori. Handmade with intention. All rights reserved.
+                © 2026 Crochet Atelier. Handmade with intention. All rights reserved.
             </div>
         </div>
     </footer>
