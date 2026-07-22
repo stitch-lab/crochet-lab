@@ -12,7 +12,7 @@
             --accent-clay: #A67B5B;
             --accent-sage: #8A9A8D;
             --white: #FFFFFF;
-            --fmn-bg: #000203;
+            --fmn-bg: #1A1C1D; /* Lightened from #000203 */
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -191,7 +191,7 @@
             width: 100%; height: 100%; object-fit: cover; display: block;
         }
 
-        /* --- Forget Me Not (NARROW PHOTO + EQUAL MARGINS) --- */
+        /* --- Forget Me Not (LIGHTER BG + VIDEO STARTS AT 3S) --- */
         .fmn-section {
             padding: 80px 60px; background: var(--fmn-bg);
             max-width: 1300px; margin: 0 auto;
@@ -200,7 +200,7 @@
         }
         .fmn-left { display: flex; flex-direction: column; gap: 40px; }
         .fmn-text h2 { font-size: 3rem; line-height: 1; margin-bottom: 25px; color: var(--white); }
-        .fmn-text p { font-size: 1rem; line-height: 1.8; color: rgba(255,255,255,0.65); margin-bottom: 18px; }
+        .fmn-text p { font-size: 1rem; line-height: 1.8; color: rgba(255,255,255,0.75); margin-bottom: 18px; }
         .fmn-left .section-label { color: var(--accent-sage); }
         
         .fmn-photo-narrow {
@@ -480,7 +480,7 @@
         </div>
     </section>
 
-    <!-- FORGET ME NOT (NARROW PHOTO + EQUAL MARGINS) -->
+    <!-- FORGET ME NOT (LIGHTER BG + VIDEO STARTS AT 3S) -->
     <section class="fmn-section">
         <div class="fmn-left">
             <div class="fmn-text">
@@ -494,8 +494,9 @@
             </div>
         </div>
         <div class="fmn-video-vertical">
+            <!-- Added #t=3 to start video at 3rd second -->
             <video autoplay muted loop playsinline>
-                <source src="https://cdn.shopify.com/videos/c/o/v/3ae1d6e117e7420992339436ee4dbc56.mov" type="video/mp4">
+                <source src="https://cdn.shopify.com/videos/c/o/v/3ae1d6e117e7420992339436ee4dbc56.mov#t=3" type="video/mp4">
             </video>
         </div>
     </section>
