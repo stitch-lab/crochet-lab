@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crochet Atelier | Fiber & Form</title>
+    <title>Casa dei Fiori | Crochet & Fiber Art</title>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -90,27 +90,27 @@
         }
         .section-title { font-size: 3rem; margin-bottom: 20px; line-height: 1.1; }
 
-        /* --- Yarn Section (COMPACT) --- */
-        .yarn-flow { padding: 80px 60px; }
+        /* --- Yarn Section (COMPACT / SMALLER) --- */
+        .yarn-flow { padding: 50px 60px; }
         .yarn-container {
-            display: flex; flex-direction: column; gap: 60px;
+            display: flex; flex-direction: column; gap: 40px;
             max-width: 1000px; margin: 0 auto;
         }
         .yarn-item {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 30px;
             align-items: center;
         }
         .yarn-item:nth-child(even) { direction: rtl; }
         .yarn-item:nth-child(even) > * { direction: ltr; }
         
         .yarn-img-wrap img {
-            width: 100%; height: 350px; object-fit: cover;
-            border-radius: 180px 180px 0 0;
+            width: 100%; height: 260px; object-fit: cover;
+            border-radius: 140px 140px 0 0;
         }
-        .yarn-text h3 { font-size: 2rem; margin-bottom: 15px; }
-        .yarn-text p { font-size: 0.95rem; line-height: 1.8; color: #555; }
+        .yarn-text h3 { font-size: 1.6rem; margin-bottom: 10px; }
+        .yarn-text p { font-size: 0.9rem; line-height: 1.7; color: #555; }
 
-        /* --- Signature Piece (MOVED AFTER BAMBOO SILK) --- */
+        /* --- Signature Piece --- */
         .feature-block {
             padding: 80px 60px; background: var(--bg-paper);
             display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
@@ -140,7 +140,7 @@
             letter-spacing: 0.15em; color: var(--accent-clay);
         }
 
-        /* --- Cardigans (PHOTO LEFT, TEXT RIGHT, SAME SIZE) --- */
+        /* --- Cardigans --- */
         .cardigan-feature {
             padding: 80px 60px; background: var(--white);
             display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
@@ -157,7 +157,7 @@
         .stat-item h4 { font-size: 1.8rem; color: var(--accent-clay); margin-bottom: 4px; }
         .stat-item span { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.2em; color: #888; }
 
-        /* --- Headbands & Hair Accessories (UPDATED: SINGLE IMAGE RIGHT, FAIRY TEXT LEFT) --- */
+        /* --- Headbands & Hair Accessories --- */
         .headband-section {
             padding: 80px 60px; background: var(--bg-paper);
             max-width: 1300px; margin: 0 auto;
@@ -170,7 +170,6 @@
         
         .headband-image-wrap {
             position: relative;
-            /* Increased top margin so head/accessory is fully visible */
             margin-top: -60px; 
         }
         .headband-image-wrap img {
@@ -178,7 +177,7 @@
             border-radius: 4px;
         }
 
-        /* --- Lilies (MOVED BEFORE TULIPS) --- */
+        /* --- Lilies --- */
         .lily-block {
             padding: 80px 60px; background: var(--white);
             display: flex; justify-content: space-between; align-items: flex-end;
@@ -195,7 +194,7 @@
         .lily-text h2 { font-size: 3rem; margin-bottom: 25px; }
         .lily-text p { font-size: 0.95rem; line-height: 1.8; color: #555; }
 
-        /* --- Tulips (LARGER POLAROID MARGINS) --- */
+        /* --- Tulips --- */
         .tulip-section {
             padding: 80px 60px; background: var(--bg-paper);
             max-width: 1300px; margin: 0 auto;
@@ -228,7 +227,7 @@
             width: 100%; height: 100%; object-fit: cover; display: block;
         }
 
-        /* --- Forget Me Not (WHITE BG + NEW VIDEO + TULIP-STYLE FRAME) --- */
+        /* --- Forget Me Not --- */
         .fmn-section {
             padding: 80px 60px; background: var(--white);
             max-width: 1300px; margin: 0 auto;
@@ -340,7 +339,7 @@
         /* --- Responsive --- */
         @media (max-width: 1024px) {
             .yarn-item, .yarn-item:nth-child(even) { grid-template-columns: 1fr; direction: ltr; }
-            .yarn-img-wrap img { height: 300px; }
+            .yarn-img-wrap img { height: 220px; }
             .collection-grid { grid-template-columns: 1fr; max-width: 350px; }
             .feature-block, .cardigan-feature, .headband-section, .tulip-section, .fmn-section { grid-template-columns: 1fr; }
             .headband-image-wrap { margin-top: 0; }
@@ -371,7 +370,7 @@
 
     <!-- NAVIGATION -->
     <nav id="navbar">
-        <div class="logo serif">Atelier.</div>
+        <div class="logo serif">Casa dei Fiori.</div>
         <ul class="nav-links">
             <li><a href="#fibers">Fibers</a></li>
             <li><a href="#collections">Collections</a></li>
@@ -397,7 +396,7 @@
 
     <!-- UNDERSTANDING OUR FIBERS (COMPACT) -->
     <section class="yarn-flow" id="fibers">
-        <div style="text-align:center; margin-bottom:50px;">
+        <div style="text-align:center; margin-bottom:30px;">
             <span class="section-label">Foundation</span>
             <h2 class="section-title serif">Understanding Our Fibers</h2>
         </div>
@@ -432,7 +431,7 @@
         </div>
     </section>
 
-    <!-- SIGNATURE PIECE (MOVED HERE - AFTER BAMBOO SILK) -->
+    <!-- SIGNATURE PIECE -->
     <section class="feature-block" id="signature">
         <div class="feature-text">
             <span class="section-label">Spotlight</span>
@@ -466,7 +465,7 @@
         </div>
     </section>
 
-    <!-- CARDIGANS (PHOTO LEFT, TEXT RIGHT, SAME SIZE) -->
+    <!-- CARDIGANS -->
     <section class="cardigan-feature">
         <div class="cardigan-img-wrap">
             <img src="https://cdn.shopify.com/s/files/1/0670/9549/4743/files/IMG_0660.heic?v=1784737038" alt="Oversized Cardigan">
@@ -484,7 +483,7 @@
         </div>
     </section>
 
-    <!-- HEADBANDS & HAIR ACCESSORIES (UPDATED: SINGLE IMAGE RIGHT, FAIRY TEXT LEFT) -->
+    <!-- HEADBANDS & HAIR ACCESSORIES -->
     <section class="headband-section" id="headbands">
         <div class="headband-text">
             <span class="section-label">Accessories</span>
@@ -497,7 +496,7 @@
         </div>
     </section>
 
-    <!-- LILIES (MOVED BEFORE TULIPS) -->
+    <!-- LILIES -->
     <section class="lily-block">
         <div class="lily-images">
             <img class="lily-img" src="https://cdn.shopify.com/s/files/1/0670/9549/4743/files/IMG_4980.heic?v=1784737035" alt="Lily Detail">
@@ -511,7 +510,7 @@
         </div>
     </section>
 
-    <!-- TULIPS (LARGER POLAROID MARGINS) -->
+    <!-- TULIPS -->
     <section class="tulip-section" id="botanicals">
         <div class="tulip-left">
             <div class="tulip-text">
@@ -532,7 +531,7 @@
         </div>
     </section>
 
-    <!-- FORGET ME NOT (WHITE BG + NEW VIDEO + TULIP-STYLE FRAME) -->
+    <!-- FORGET ME NOT -->
     <section class="fmn-section">
         <div class="fmn-left">
             <div class="fmn-text">
@@ -618,7 +617,7 @@
             <p class="footer-quote">"Every stitch is a breath. Every piece is a story."</p>
             <a href="mailto:your@email.com" class="footer-cta">Begin Your Commission →</a>
             <div class="footer-bottom">
-                © 2026 Crochet Atelier. Handmade with intention. All rights reserved.
+                © 2026 Casa dei Fiori. Handmade with intention. All rights reserved.
             </div>
         </div>
     </footer>
