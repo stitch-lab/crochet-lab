@@ -1,716 +1,476 @@
-Here is the elevated, high-end version of your crochet website. I have integrated the specific video and photos you provided, updated the color palette to match the warm, natural tones of your images, and refined the typography for a more luxurious "editorial" feel.
-
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Art of Crochet | Handmade with Love</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>Crochet Atelier | Fiber & Form</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Elevated Color Palette based on your images */
-            --bg-cream: #FDFBF7;
-            --text-charcoal: #2A2A2A;
-            --text-warm-grey: #5C554F;
-            --accent-clay: #B07D62; /* Matches the wooden hook/warm tones */
-            --accent-sage: #8DA399; /* Subtle nod to the green yarn */
+            --bg-paper: #F5F2EB;
+            --text-ink: #1A1A1A;
+            --accent-clay: #A67B5B;
+            --accent-sage: #8A9A8D;
             --white: #FFFFFF;
-            --border-light: #EAE5DF;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'Lato', sans-serif;
-            color: var(--text-charcoal);
-            background-color: var(--bg-cream);
-            line-height: 1.8;
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-paper);
+            color: var(--text-ink);
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
 
-        h1, h2, h3, h4 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 500;
-            letter-spacing: -0.02em;
+        h1, h2, h3, .serif {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
         }
 
         /* --- Navigation --- */
         nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 25px 60px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            background: transparent;
+            position: fixed; top: 0; width: 100%; padding: 30px 60px;
+            display: flex; justify-content: space-between; align-items: center;
+            z-index: 1000; transition: all 0.4s ease;
+            background: transparent; mix-blend-mode: difference; color: var(--white);
         }
-
         nav.scrolled {
-            background: rgba(253, 251, 247, 0.92);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            box-shadow: 0 1px 0 rgba(0,0,0,0.05);
-            padding: 15px 60px;
+            background: rgba(245, 242, 235, 0.95); backdrop-filter: blur(10px);
+            mix-blend-mode: normal; color: var(--text-ink); padding: 20px 60px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
         }
-
-        .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: var(--white);
-            text-decoration: none;
-            transition: color 0.3s ease;
-            letter-spacing: 0.05em;
-        }
-
-        nav.scrolled .logo {
-            color: var(--text-charcoal);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 45px;
-            list-style: none;
-        }
-
+        .logo { font-size: 1.6rem; letter-spacing: -0.02em; font-weight: 600; }
+        .nav-links { display: flex; gap: 40px; list-style: none; }
         .nav-links a {
-            text-decoration: none;
-            color: var(--white);
-            font-weight: 400;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            transition: opacity 0.3s ease;
-            position: relative;
+            text-decoration: none; color: inherit; font-size: 0.7rem;
+            text-transform: uppercase; letter-spacing: 0.2em; opacity: 0.8;
+            transition: opacity 0.3s; position: relative;
         }
-
-        nav.scrolled .nav-links a {
-            color: var(--text-charcoal);
-        }
-
+        .nav-links a:hover { opacity: 1; }
         .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -6px;
-            left: 0;
-            width: 0;
-            height: 1px;
-            background: var(--accent-clay);
-            transition: width 0.4s ease;
+            content: ''; position: absolute; bottom: -4px; left: 0;
+            width: 0; height: 1px; background: currentColor; transition: width 0.3s;
         }
+        .nav-links a:hover::after { width: 100%; }
 
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        /* --- Hero Section (Video) --- */
+        /* --- Hero --- */
         .hero {
-            height: 100vh;
-            position: relative;
-            display: flex;
+            height: 100vh; width: 100%; position: relative; overflow: hidden;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .hero-bg {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover; z-index: -1; filter: brightness(0.7);
+        }
+        .hero-title {
+            font-size: clamp(4rem, 10vw, 8rem); line-height: 0.9;
+            text-align: center; color: var(--white); 
+            text-shadow: 0 4px 30px rgba(0,0,0,0.3);
+        }
+        .hero-sub {
+            position: absolute; bottom: 60px; left: 60px;
+            color: var(--white); font-size: 0.85rem; letter-spacing: 0.15em;
+            max-width: 350px; line-height: 1.8; text-transform: uppercase;
+        }
+
+        /* --- Section Labels --- */
+        .section-label {
+            font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.3em;
+            color: var(--accent-clay); margin-bottom: 15px; display: block;
+        }
+        .section-title { font-size: 3rem; margin-bottom: 20px; line-height: 1.1; }
+
+        /* --- Yarn Section (Photo + Text Pairs) --- */
+        .yarn-flow { padding: 120px 60px; }
+        .yarn-container {
+            display: flex; flex-direction: column; gap: 100px;
+            max-width: 1100px; margin: 0 auto;
+        }
+        .yarn-item {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
             align-items: center;
-            justify-content: center;
-            overflow: hidden;
         }
-
-        .hero-video-bg {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            transform: translate(-50%, -50%);
-            z-index: -1;
-            object-fit: cover;
-            filter: brightness(0.75); /* Slightly darkens video for text readability */
+        .yarn-item:nth-child(even) { direction: rtl; }
+        .yarn-item:nth-child(even) > * { direction: ltr; }
+        
+        .yarn-img-wrap img {
+            width: 100%; height: 500px; object-fit: cover;
+            border-radius: 250px 250px 0 0;
         }
+        .yarn-text h3 { font-size: 2.5rem; margin-bottom: 20px; }
+        .yarn-text p { font-size: 1rem; line-height: 1.9; color: #555; }
 
-        .hero-content {
+        /* --- Momma & Baby Collection --- */
+        .collection-section {
+            padding: 120px 60px; background: var(--white);
             text-align: center;
-            color: var(--white);
-            z-index: 1;
-            max-width: 800px;
-            padding: 0 20px;
-            animation: fadeInUp 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .collection-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: 30px; max-width: 1200px; margin: 60px auto 0;
+        }
+        .collection-img {
+            width: 100%; aspect-ratio: 3/4; object-fit: cover;
+            border-radius: 4px; transition: transform 0.6s ease;
+        }
+        .collection-img:hover { transform: translateY(-5px); }
+        .collection-caption {
+            margin-top: 15px; font-size: 0.8rem; text-transform: uppercase;
+            letter-spacing: 0.15em; color: var(--accent-clay);
         }
 
-        .hero-subtitle {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.3em;
-            margin-bottom: 20px;
-            opacity: 0.9;
-            font-weight: 300;
+        /* --- Signature Piece (Warmth Focus) --- */
+        .feature-block {
+            padding: 120px 60px; background: var(--bg-paper);
+            display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+            align-items: center; max-width: 1400px; margin: 0 auto;
         }
+        .feature-img-wrap { height: 650px; overflow: hidden; border-radius: 4px; }
+        .feature-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+        .feature-text h2 { font-size: 3.5rem; line-height: 1; margin-bottom: 30px; }
+        .feature-text p { font-size: 1.05rem; line-height: 1.9; color: #444; margin-bottom: 20px; }
 
-        .hero-content h1 {
-            font-size: 5.5rem;
-            font-weight: 400;
-            margin-bottom: 25px;
-            line-height: 1.1;
-            font-style: italic;
-        }
-
-        .hero-content p {
-            font-size: 1.2rem;
-            font-weight: 300;
-            opacity: 0.95;
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.6;
-        }
-
-        .scroll-indicator {
-            position: absolute;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: bounce 3s infinite;
-            opacity: 0.7;
-        }
-
-        .scroll-indicator svg {
-            width: 30px;
-            height: 30px;
-            fill: none;
-            stroke: var(--white);
-            stroke-width: 1.5;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-            40% { transform: translateX(-50%) translateY(-10px); }
-            60% { transform: translateX(-50%) translateY(-5px); }
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(50px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* --- General Section Styles --- */
-        section {
-            padding: 140px 60px;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 80px;
-        }
-
-        .section-title {
-            font-size: 3.2rem;
-            margin-bottom: 15px;
-            color: var(--text-charcoal);
-        }
-
-        .section-subtitle {
-            font-size: 1.05rem;
-            color: var(--text-warm-grey);
-            max-width: 600px;
-            margin: 0 auto;
-            font-weight: 300;
-        }
-
-        /* --- Introduction Section --- */
-        .intro-section {
+        /* --- Tulips (Full Color Video) --- */
+        .tulip-block {
+            display: grid; grid-template-columns: 1.2fr 1fr; min-height: 80vh;
             background: var(--white);
         }
+        .tulip-visual video { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .tulip-content { padding: 100px 80px; display: flex; flex-direction: column; justify-content: center; }
+        .tulip-content h2 { font-size: 4rem; line-height: 0.95; margin-bottom: 40px; }
+        .tulip-content p { font-size: 1.05rem; line-height: 1.9; color: #444; margin-bottom: 20px; }
 
-        .split-layout {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 100px;
-            align-items: center;
-            max-width: 1400px;
-            margin: 0 auto;
+        /* --- Forget Me Not --- */
+        .detail-section {
+            padding: 120px 60px; background: var(--bg-paper);
+            display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+            align-items: center; max-width: 1400px; margin: 0 auto;
         }
+        .detail-text { order: 2; }
+        .detail-img { order: 1; height: 600px; overflow: hidden; border-radius: 4px; }
+        .detail-img img { width: 100%; height: 100%; object-fit: cover; }
+        .detail-text h2 { font-size: 3.5rem; line-height: 1; margin-bottom: 30px; }
+        .detail-text p { font-size: 1.05rem; line-height: 1.9; color: #444; margin-bottom: 20px; }
 
-        .split-image-wrapper {
-            position: relative;
-            border-radius: 4px;
-            overflow: hidden;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.08);
+        /* --- Lilies --- */
+        .lily-block {
+            padding: 120px 60px; background: var(--white);
+            display: flex; justify-content: space-between; align-items: flex-end;
+            max-width: 1400px; margin: 0 auto;
         }
-
-        .split-image-wrapper img {
-            width: 100%;
-            height: 700px;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.8s ease;
+        .lily-images { display: flex; }
+        .lily-img {
+            width: 320px; height: 480px; object-fit: cover; 
+            border-radius: 200px 200px 0 0; border: 8px solid var(--white);
         }
+        .lily-img:first-child { margin-right: -50px; z-index: 1; transform: translateY(30px); }
+        .lily-img:last-child { z-index: 2; }
+        .lily-text { max-width: 450px; padding-bottom: 30px; }
+        .lily-text h2 { font-size: 3.5rem; margin-bottom: 30px; }
+        .lily-text p { font-size: 1rem; line-height: 1.8; color: #555; }
 
-        .split-image-wrapper:hover img {
-            transform: scale(1.03);
+        /* --- Cardigans --- */
+        .cardigan-feature {
+            padding: 120px 60px; background: var(--bg-paper);
+            display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+            max-width: 1400px; margin: 0 auto;
         }
+        .cardigan-visual { height: 700px; overflow: hidden; clip-path: polygon(8% 0, 100% 0, 92% 100%, 0% 100%); }
+        .cardigan-visual img { width: 100%; height: 100%; object-fit: cover; }
+        .cardigan-info h2 { font-size: 3.5rem; line-height: 1; margin-bottom: 30px; }
+        .cardigan-info p { font-size: 1.05rem; line-height: 1.8; margin-bottom: 30px; color: #444; }
+        .stats-row { display: flex; gap: 40px; margin-top: 40px; border-top: 1px solid #ddd; padding-top: 30px; }
+        .stat-item h4 { font-size: 2rem; color: var(--accent-clay); margin-bottom: 5px; }
+        .stat-item span { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.2em; color: #888; }
 
-        .split-content h2 {
-            font-size: 3rem;
-            margin-bottom: 30px;
-            color: var(--text-charcoal);
-            line-height: 1.2;
+        /* --- Timeline --- */
+        .timeline-flow { padding: 120px 60px; background: var(--white); }
+        .timeline-header { text-align: center; margin-bottom: 80px; }
+        .timeline-header h2 { font-size: 3rem; margin-bottom: 10px; }
+        .t-line { position: relative; max-width: 700px; margin: 0 auto; padding-left: 50px; }
+        .t-line::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 1px; background: #ccc; }
+        .t-item { position: relative; margin-bottom: 60px; padding-left: 30px; }
+        .t-item::after {
+            content: ''; position: absolute; left: -54px; top: 8px;
+            width: 8px; height: 8px; background: var(--accent-clay); border-radius: 50%;
         }
+        .t-year { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; color: var(--accent-clay); margin-bottom: 8px; }
+        .t-item h4 { font-size: 1.2rem; margin-bottom: 8px; }
+        .t-item p { font-size: 0.9rem; color: #666; line-height: 1.7; }
 
-        .split-content p {
-            font-size: 1.1rem;
-            color: var(--text-warm-grey);
-            margin-bottom: 25px;
-            font-weight: 300;
+        /* --- Organic Footer --- */
+        .organic-footer {
+            padding: 150px 60px 80px; background: var(--text-ink); color: var(--bg-paper);
+            text-align: center; position: relative; overflow: hidden;
         }
-
-        .btn-outline {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 15px 35px;
-            border: 1px solid var(--text-charcoal);
-            color: var(--text-charcoal);
-            text-decoration: none;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            letter-spacing: 0.15em;
-            transition: all 0.3s ease;
+        .organic-footer::before {
+            content: ''; position: absolute; top: -100px; left: 0; right: 0;
+            height: 200px; background: var(--bg-paper);
+            border-radius: 0 0 50% 50%; z-index: 1;
         }
-
-        .btn-outline:hover {
-            background: var(--text-charcoal);
-            color: var(--white);
+        .footer-content { position: relative; z-index: 2; }
+        .footer-quote {
+            font-family: 'Cormorant Garamond', serif; font-size: 2.5rem;
+            font-style: italic; margin-bottom: 40px; opacity: 0.9;
         }
-
-        /* --- Gallery / Portfolio Section (Using your new photos) --- */
-        .portfolio-section {
-            background: var(--bg-cream);
-            padding-bottom: 80px;
+        .footer-cta {
+            display: inline-block; padding: 15px 40px; border: 1px solid var(--accent-clay);
+            color: var(--bg-paper); text-decoration: none; text-transform: uppercase;
+            font-size: 0.75rem; letter-spacing: 0.2em; transition: all 0.3s ease;
+            margin-bottom: 60px;
         }
-
-        .masonry-grid {
-            column-count: 3;
-            column-gap: 30px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .gallery-item {
-            break-inside: avoid;
-            margin-bottom: 30px;
-            position: relative;
-            overflow: hidden;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        .gallery-item img {
-            width: 100%;
-            display: block;
-            transition: transform 0.7s ease, filter 0.5s ease;
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.05);
-            filter: brightness(0.9);
-        }
-
-        .gallery-overlay {
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(42, 42, 42, 0.3);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .gallery-item:hover .gallery-overlay {
-            opacity: 1;
-        }
-
-        .gallery-overlay span {
-            color: var(--white);
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            font-style: italic;
-            transform: translateY(10px);
-            transition: transform 0.4s ease;
-        }
-
-        .gallery-item:hover .gallery-overlay span {
-            transform: translateY(0);
-        }
-
-        /* --- Yarn & Tools Section --- */
-        .details-section {
-            background: var(--white);
-        }
-
-        .details-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 50px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .detail-card {
-            text-align: center;
-            padding: 40px;
-            border: 1px solid var(--border-light);
-            border-radius: 4px;
-            transition: all 0.4s ease;
-        }
-
-        .detail-card:hover {
-            border-color: var(--accent-clay);
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.05);
-        }
-
-        .detail-icon {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            color: var(--accent-clay);
-        }
-
-        .detail-card h3 {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-        }
-
-        .detail-card p {
-            color: var(--text-warm-grey);
-            font-size: 1rem;
-            font-weight: 300;
-        }
-
-        /* --- Quote Section --- */
-        .quote-section {
-            background: linear-gradient(rgba(42, 42, 42, 0.7), rgba(42, 42, 42, 0.7)),
-                        url('https://cdn.shopify.com/s/files/1/0670/9549/4743/files/pexels-miriam-alonso-7585566.jpg?v=1784734223') center/cover fixed;
-            padding: 180px 60px;
-            text-align: center;
-            color: var(--white);
-        }
-
-        .quote-text {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            font-weight: 400;
-            font-style: italic;
-            max-width: 900px;
-            margin: 0 auto 30px;
-            line-height: 1.4;
-        }
-
-        .quote-author {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            opacity: 0.8;
-        }
-
-        /* --- Footer --- */
-        footer {
-            background: var(--text-charcoal);
-            color: var(--white);
-            padding: 100px 60px 40px;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 80px;
-            max-width: 1400px;
-            margin: 0 auto 80px;
-        }
-
-        .footer-brand h2 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-        }
-
-        .footer-brand p {
-            color: rgba(255,255,255,0.6);
-            line-height: 1.8;
-            max-width: 400px;
-            font-weight: 300;
-        }
-
-        .footer-column h3 {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            margin-bottom: 30px;
-            color: var(--white);
-        }
-
-        .footer-column ul {
-            list-style: none;
-        }
-
-        .footer-column li {
-            margin-bottom: 15px;
-        }
-
-        .footer-column a {
-            color: rgba(255,255,255,0.6);
-            text-decoration: none;
-            transition: color 0.3s ease;
-            font-weight: 300;
-        }
-
-        .footer-column a:hover {
-            color: var(--accent-clay);
-        }
-
+        .footer-cta:hover { background: var(--accent-clay); color: var(--white); }
         .footer-bottom {
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 40px;
-            text-align: center;
-            color: rgba(255,255,255,0.4);
-            font-size: 0.85rem;
-        }
-
-        /* --- Animations & Utilities --- */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+            border-top: 1px solid rgba(245, 242, 235, 0.1); padding-top: 30px;
+            font-size: 0.75rem; opacity: 0.4; letter-spacing: 0.1em;
         }
 
         /* --- Responsive --- */
         @media (max-width: 1024px) {
-            .hero-content h1 { font-size: 4rem; }
-            .split-layout { grid-template-columns: 1fr; gap: 60px; }
-            .split-image-wrapper img { height: 500px; }
-            .masonry-grid { column-count: 2; }
-            .footer-content { grid-template-columns: 1fr 1fr; gap: 40px; }
+            .yarn-item, .yarn-item:nth-child(even) { grid-template-columns: 1fr; direction: ltr; }
+            .yarn-img-wrap img { height: 400px; }
+            .collection-grid { grid-template-columns: 1fr; max-width: 400px; }
+            .feature-block, .detail-section, .tulip-block, .cardigan-feature { grid-template-columns: 1fr; }
+            .detail-text { order: 1; } .detail-img { order: 2; }
+            .tulip-visual, .cardigan-visual { height: 50vh; clip-path: none; }
+            .lily-block { flex-direction: column; align-items: center; gap: 50px; }
         }
-
         @media (max-width: 768px) {
             nav { padding: 20px 30px; }
-            nav.scrolled { padding: 15px 30px; }
-            .nav-links { display: none; } /* Simplified for mobile */
-            section { padding: 80px 30px; }
-            .hero-content h1 { font-size: 3rem; }
-            .section-title { font-size: 2.5rem; }
-            .masonry-grid { column-count: 1; }
-            .footer-content { grid-template-columns: 1fr; }
-            .quote-text { font-size: 2rem; }
+            .nav-links { display: none; }
+            .hero-sub { left: 30px; bottom: 30px; }
+            section, .yarn-flow, .collection-section, .feature-block, .detail-section, 
+            .lily-block, .cardigan-feature, .timeline-flow, .organic-footer { padding: 80px 30px; }
+            .tulip-content { padding: 60px 30px; }
+            .section-title, .yarn-text h3, .feature-text h2, .detail-text h2, 
+            .tulip-content h2, .lily-text h2, .cardigan-info h2 { font-size: 2.5rem; }
+            .organic-footer::before { height: 100px; top: -50px; }
+            .footer-quote { font-size: 1.8rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Navigation -->
+    <!-- NAVIGATION -->
     <nav id="navbar">
-        <a href="#" class="logo">Crochet.</a>
+        <div class="logo serif">Atelier.</div>
         <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#portfolio">Portfolio</a></li>
-            <li><a href="#materials">Materials</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#fibers">Fibers</a></li>
+            <li><a href="#collections">Collections</a></li>
+            <li><a href="#signature">Signature</a></li>
+            <li><a href="#botanicals">Botanicals</a></li>
+            <li><a href="#timeline">History</a></li>
         </ul>
     </nav>
 
-    <!-- Hero Section with Video Background -->
+    <!-- HERO -->
     <section class="hero">
-        <video class="hero-video-bg" autoplay muted loop playsinline>
-            <source src="https://cdn.shopify.com/videos/c/o/v/e064bcb25f4b4baab4d3b8593af4b75e.mp4" type="video/mp4">
-        </video>
-        <div class="hero-content">
-            <p class="hero-subtitle">Handcrafted with intention</p>
-            <h1>The Art of Crochet</h1>
-            <p>Transforming simple threads into timeless treasures, one stitch at a time.</p>
-        </div>
-        <div class="scroll-indicator">
-            <svg viewBox="0 0 24 24"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+        <img class="hero-bg" src="https://cdn.shopify.com/s/files/1/0670/9549/4743/files/IMG_4657.heic?v=1784737035" alt="Crochet Cardigan Hero">
+        <h1 class="hero-title serif">Stitched<br>With Soul</h1>
+        <div class="hero-sub">
+            A curated exploration of fiber, form, and botanical beauty.<br>Handmade in small batches.
         </div>
     </section>
 
-    <!-- Introduction Section -->
-    <section class="intro-section" id="about">
-        <div class="split-layout fade-in">
-            <div class="split-image-wrapper">
-                <!-- Using one of your provided photos -->
-                <img src="https://cdn.shopify.com/s/files/1/0670/9549/4743/files/pexels-miriam-alonso-7585762.jpg?v=1784734223" alt="Hands crocheting with pastel yarn">
-            </div>
-            <div class="split-content">
-                <h2>A Meditative Craft</h2>
-                <p>Crochet is more than just a technique; it is a language of loops and knots that speaks to the soul. In a world that moves too fast, this craft offers a sanctuary of slow, deliberate creation.</p>
-                <p>From the softest cottons to the warmest wools, every material tells a story. My work celebrates the tactile beauty of handmade objects, designed to bring warmth and comfort to your everyday life.</p>
-                <a href="#portfolio" class="btn-outline">View Collection</a>
-            </div>
+    <!-- UNDERSTANDING OUR FIBERS -->
+    <section class="yarn-flow" id="fibers">
+        <div style="text-align:center; margin-bottom:80px;">
+            <span class="section-label">Foundation</span>
+            <h2 class="section-title serif">Understanding Our Fibers</h2>
+            <p style="color:#666; max-width:600px; margin:0 auto; font-size:0.95rem;">The quality of every piece begins with the raw material. We source exclusively natural, sustainable fibers.</p>
         </div>
-    </section>
-
-    <!-- Portfolio Gallery Section -->
-    <section class="portfolio-section" id="portfolio">
-        <div class="section-header fade-in">
-            <h2 class="section-title">Curated Works</h2>
-            <p class="section-subtitle">A selection of recent projects featuring natural fibers and earthy tones.</p>
-        </div>
-
-        <div class="masonry-grid">
-            <!-- Photo 1: Yarn balls and coffee -->
-            <div class="gallery-item fade-in">
-                <img src="https://cdn.shopify.com/s/files/1/0670/9549/4743/files/pexels-miriam-alonso-7585566.jpg?v=1784734223" alt="Pastel yarn balls and coffee">
-                <div class="gallery-overlay"><span>Morning Rituals</span></div>
+        <div class="yarn-container">
+            <!-- Organic Cotton -->
+            <div class="yarn-item">
+                <div class="yarn-img-wrap">
+                    <img src="https://cdn.shopify.com/s/files/1/0670/9549/4743/files/il_1588xN.2684154207_s340.avif?v=1784749321" alt="Organic Cotton">
+                </div>
+                <div class="yarn-text">
+                    <h3 class="serif">Organic Cotton</h3>
+                    <p>Grown without pesticides and processed chemical-free. Cotton's breathable structure makes it perfect for summer garments, baby items, and lightweight accessories that get softer with every wash. Its natural absorbency and hypoallergenic properties make it ideal for sensitive skin.</p>
+                </div>
             </div>
             
-            <!-- Photo 2: Hands working -->
-            <div class="gallery-item fade-in">
-                <img src="https://cdn.shopify.com/s/files/1/0670/9549/4743/files/pexels-miriam-alonso-7585762.jpg?v=1784734223" alt="Hands crocheting">
-                <div class="gallery-overlay"><span>The Process</span></div>
+            <!-- Baby Alpaca (UPDATED IMAGE) -->
+            <div class="yarn-item">
+                <div class="yarn-img-wrap">
+                    <img src="https://cdn.shopify.com/s/files/1/0670/9549/4743/files/Baby-Alpaca-beauty-1-sq.webp?v=1784749320" alt="Baby Alpaca">
+                </div>
+                <div class="yarn-text">
+                    <h3 class="serif">Baby Alpaca</h3>
+                    <p>Hypoallergenic, lanolin-free, and incredibly soft. Alpaca fiber has a natural silk-like sheen and creates luxurious drape for special occasion pieces that are warmer than wool yet lighter in weight. Each fiber is hollow, providing superior insulation without bulk.</p>
+                </div>
             </div>
-
-            <!-- Photo 3: Green textured fabric -->
-            <div class="gallery-item fade-in">
-                <img src="https://cdn.shopify.com/s/files/1/0670/9549/4743/files/pexels-miriam-alonso-7585768.jpg?v=1784734224" alt="Green crochet texture">
-                <div class="gallery-overlay"><span>Earth Tones</span></div>
-            </div>
-
-            <!-- Photo 4: Pink yarn detail -->
-            <div class="gallery-item fade-in">
-                <img src="https://cdn.shopify.com/s/files/1/0670/9549/4743/files/pexels-miriam-alonso-7585271.jpg?v=1784734225" alt="Pink yarn close up">
-                <div class="gallery-overlay"><span>Soft Hues</span></div>
-            </div>
-
-            <!-- Photo 5: Blue/Green yarn detail -->
-            <div class="gallery-item fade-in">
-                <img src="https://cdn.shopify.com/s/files/1/0670/9549/4743/files/pexels-miriam-alonso-7585281.jpg?v=1784734225" alt="Blue and green yarn">
-                <div class="gallery-overlay"><span>Ocean Breeze</span></div>
+            
+            <!-- Bamboo Silk -->
+            <div class="yarn-item">
+                <div class="yarn-img-wrap">
+                    <img src="https://cdn.shopify.com/s/files/1/0670/9549/4743/files/afb1a9_8f0e059f22ae4497a23bd6c897ff08eb_mv2.avif?v=1784749502" alt="Bamboo Silk">
+                </div>
+                <div class="yarn-text">
+                    <h3 class="serif">Bamboo Silk</h3>
+                    <p>Naturally antibacterial with UV protection. Bamboo's smooth round fibers create a cool-to-touch fabric with beautiful fluid drape, ideal for shawls, wraps, and warm-weather wearables. It regulates moisture better than cotton and feels like liquid against the skin.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Materials & Tools Section -->
-    <section class="details-section" id="materials">
-        <div class="section-header fade-in">
-            <h2 class="section-title">Tools of the Trade</h2>
-            <p class="section-subtitle">Quality materials make all the difference in the final piece.</p>
-        </div>
-
-        <div class="details-grid">
-            <div class="detail-card fade-in">
-                <div class="detail-icon">🧶</div>
-                <h3>Natural Fibers</h3>
-                <p>I exclusively use sustainably sourced cotton, merino wool, and bamboo blends. These fibers breathe, age beautifully, and feel incredible against the skin.</p>
+    <!-- MOMMA & BABY COLLECTION -->
+    <section class="collection-section" id="collections">
+        <span class="section-label">Curated Sets</span>
+        <h2 class="section-title serif">Momma & Baby</h2>
+        <p style="color:#666; max-width:500px; margin:0 auto; font-size:0.95rem;">Matching sets crafted in the same tender stitches — because love comes in pairs. Each set is designed to be shared, worn, and passed down.</p>
+        <div class="collection-grid">
+            <div>
+                <img class="collection-img" src="https://cdn.shopify.com/s/files/1/0670/9549/4743/files/IMG_4989_1.heic?v=1784737037" alt="Momma & Baby Set 1">
+                <div class="collection-caption">Set One</div>
             </div>
-            <div class="detail-card fade-in">
-                <div class="detail-icon">🪝</div>
-                <h3>Ergonomic Hooks</h3>
-                <p>From polished wood to surgical steel, the right hook ensures consistent tension and reduces hand fatigue during long crafting sessions.</p>
+            <div>
+                <img class="collection-img" src="https://cdn.shopify.com/s/files/1/0670/9549/4743/files/IMG_7431.heic?v=1784737037" alt="Momma & Baby Set 2">
+                <div class="collection-caption">Set Two</div>
             </div>
-            <div class="detail-card fade-in">
-                <div class="detail-icon">✨</div>
-                <h3>Timeless Patterns</h3>
-                <p>Combining vintage techniques with modern aesthetics to create pieces that are both nostalgic and perfectly suited for contemporary living.</p>
+            <div>
+                <img class="collection-img" src="https://cdn.shopify.com/s/files/1/0670/9549/4743/files/IMG_6071.heic?v=1784737038" alt="Momma & Baby Set 3">
+                <div class="collection-caption">Set Three</div>
             </div>
         </div>
     </section>
 
-    <!-- Quote Section -->
-    <section class="quote-section">
-        <blockquote class="quote-text fade-in">
-            "Crochet is not just about creating something beautiful. It's about creating something meaningful, one stitch at a time."
-        </blockquote>
-        <p class="quote-author fade-in">— Anonymous Maker</p>
+    <!-- SIGNATURE PIECE -->
+    <section class="feature-block" id="signature">
+        <div class="feature-img-wrap">
+            <img src="https://cdn.shopify.com/s/files/1/0670/9549/4743/files/56A51847-EC35-40AC-AB17-3B484C640044.jpg?v=1784737037" alt="Signature Crochet Piece">
+        </div>
+        <div class="feature-text">
+            <span class="section-label">Spotlight</span>
+            <h2 class="serif">The Signature Piece</h2>
+            <p>This piece was designed for the coldest mornings and the quietest evenings. The dense stitch pattern traps body heat while the natural alpaca fibers create an insulating barrier against wind and chill. It doesn't just cover you — it holds warmth close to your skin like a second layer.</p>
+            <p>The oversized silhouette allows for layering over thick sweaters without restriction, while the high collar can be folded up to protect your neck from biting cold. This is crochet as functional art — beautiful enough to display, warm enough to live in.</p>
+        </div>
     </section>
 
-    <!-- Footer -->
-    <footer id="contact">
+    <!-- TULIPS -->
+    <section class="tulip-block" id="botanicals">
+        <div class="tulip-visual">
+            <video autoplay muted loop playsinline>
+                <source src="https://cdn.shopify.com/videos/c/o/v/1acb87f291ca4d598306380b8c449b52.mov" type="video/mp4">
+            </video>
+        </div>
+        <div class="tulip-content">
+            <span class="section-label">Botanical Series</span>
+            <h2 class="serif">Crocheted Tulips</h2>
+            <p>Symbolizing perfect love and renewal. Each petal is shaped individually using layered single crochet stitches, then assembled around a wired stem so every bloom can be posed naturally.</p>
+            <p>The gradient color transitions mimic real tulip varieties — from deep crimson bases fading to golden tips. No two flowers are identical, just like their living counterparts. Each takes 3-4 hours to complete.</p>
+        </div>
+    </section>
+
+    <!-- THE FORGET ME NOT -->
+    <section class="detail-section">
+        <div class="detail-text">
+            <span class="section-label">Botanical Series</span>
+            <h2 class="serif">The Forget Me Not</h2>
+            <p>Named for the tiny blue flowers that symbolize enduring memory and true love. These miniature blooms are crocheted with lace-weight cotton thread and a 1.5mm steel hook, requiring a steadiness of hand that only comes with years of practice.</p>
+            <p>Each flower head contains over 200 individual stitches, each one placed to replicate the delicate veining of a real forget-me-not petal. They are assembled into clusters that can be worn as hair accessories, pinned to lapels, or arranged in small vases as permanent botanical art.</p>
+        </div>
+        <div class="detail-img">
+            <img src="https://cdn.shopify.com/s/files/1/0670/9549/4743/files/IMG_3312.heic?v=1784737033" alt="Forget Me Not Detail">
+        </div>
+    </section>
+
+    <!-- LILIES -->
+    <section class="lily-block">
+        <div class="lily-images">
+            <img class="lily-img" src="https://cdn.shopify.com/s/files/1/0670/9549/4743/files/IMG_4980.heic?v=1784737035" alt="Lily Detail">
+            <img class="lily-img" src="https://cdn.shopify.com/s/files/1/0670/9549/4743/files/IMG_4970.heic?v=1784737034" alt="Lily Arrangement">
+        </div>
+        <div class="lily-text">
+            <span class="section-label">Botanical Series</span>
+            <h2 class="serif">Botanical Lilies</h2>
+            <p>Lilies represent purity and devotion. Crafted using fine cotton thread and steel hooks to achieve the delicate veining visible on each petal surface.</p>
+            <p>The stamens are hand-formed from embroidery floss and secured with tiny French knots at the center. Each lily takes approximately four hours to complete, from base calyx to fully opened bloom.</p>
+        </div>
+    </section>
+
+    <!-- CARDIGANS -->
+    <section class="cardigan-feature">
+        <div class="cardigan-visual">
+            <img src="https://cdn.shopify.com/s/files/1/0670/9549/4743/files/IMG_0660.heic?v=1784737038" alt="Oversized Cardigan">
+        </div>
+        <div class="cardigan-info">
+            <span class="section-label">Wearable Art</span>
+            <h2 class="serif">The Cardigan</h2>
+            <p>Each cardigan begins as a single chain and grows into a garment that carries the weight of hundreds of hours. I use oversized silhouettes and textured stitch combinations to create pieces that feel like a hug you can wear.</p>
+            <p>Natural fibers are chosen specifically for how they age — merino softens with every wash, cotton develops a lived-in drape, and alpaca gains a luminous halo over time. These are heirlooms in the making.</p>
+            <div class="stats-row">
+                <div class="stat-item"><h4 class="serif">40+</h4><span>Hours per piece</span></div>
+                <div class="stat-item"><h4 class="serif">100%</h4><span>Natural Fibers</span></div>
+                <div class="stat-item"><h4 class="serif">0</h4><span>Machines Used</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TIMELINE -->
+    <section class="timeline-flow" id="timeline">
+        <div class="timeline-header">
+            <span class="section-label">Heritage</span>
+            <h2 class="serif">A Craft Through Time</h2>
+            <p style="color:#666; font-size:0.95rem;">From famine relief to fashion statement</p>
+        </div>
+        <div class="t-line">
+            <div class="t-item">
+                <div class="t-year">1800s</div>
+                <h4>European Origins</h4>
+                <p>Crochet emerges as a distinct craft in France and Ireland. Irish lace crochet becomes a vital industry during the Potato Famine, providing income for thousands of families.</p>
+            </div>
+            <div class="t-item">
+                <div class="t-year">1846</div>
+                <h4>First Pattern Publications</h4>
+                <p>Mlle. Riego de la Branchardière publishes the first crochet pattern books, transforming oral tradition into written instruction and spreading the craft across Europe.</p>
+            </div>
+            <div class="t-item">
+                <div class="t-year">1920s</div>
+                <h4>The Golden Age</h4>
+                <p>Crochet reaches peak popularity. Elaborate collars, cloche hats, and decorative home textiles become essential fashion staples worldwide.</p>
+            </div>
+            <div class="t-item">
+                <div class="t-year">1970s</div>
+                <h4>Bohemian Revival</h4>
+                <p>Granny squares, colorful afghans, and freeform crochet define the counterculture aesthetic. Crochet becomes a symbol of handmade resistance to mass production.</p>
+            </div>
+            <div class="t-item">
+                <div class="t-year">2020s</div>
+                <h4>Modern Renaissance</h4>
+                <p>Sustainable fashion movements and innovative designers bring crochet into contemporary culture. The craft is recognized as both art and activism.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ORGANIC FOOTER -->
+    <footer class="organic-footer" id="contact">
         <div class="footer-content">
-            <div class="footer-brand">
-                <h2>Crochet.</h2>
-                <p>Celebrating the timeless craft of crochet and inspiring creators worldwide. Join our community of passionate makers.</p>
+            <p class="footer-quote">"Every stitch is a breath. Every piece is a story."</p>
+            <a href="mailto:your@email.com" class="footer-cta">Begin Your Commission →</a>
+            <div class="footer-bottom">
+                © 2026 Crochet Atelier. Handmade with intention. All rights reserved.
             </div>
-            <div class="footer-column">
-                <h3>Explore</h3>
-                <ul>
-                    <li><a href="#about">Our Story</a></li>
-                    <li><a href="#portfolio">Gallery</a></li>
-                    <li><a href="#materials">Materials</a></li>
-                    <li><a href="#">Patterns</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Connect</h3>
-                <ul>
-                    <li><a href="#">Instagram</a></li>
-                    <li><a href="#">Pinterest</a></li>
-                    <li><a href="#">Email Us</a></li>
-                    <li><a href="#">Newsletter</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 The Art of Crochet. All rights reserved. Crafted with love.</p>
         </div>
     </footer>
 
     <script>
-        // Navbar scroll effect
-        window.addEventListener('scroll', function() {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
+        window.addEventListener('scroll', () => {
+            document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
         });
 
-        // Intersection Observer for fade-in animations
-        const observerOptions = {
-            threshold: 0.15,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Smooth scroll for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
         });
     </script>
 </body>
 </html>
-```
