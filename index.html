@@ -35,19 +35,32 @@
             position: fixed; top: 0; width: 100%; padding: 25px 60px;
             display: flex; justify-content: space-between; align-items: center;
             z-index: 1000; transition: all 0.4s ease;
-            background: transparent; mix-blend-mode: difference; color: var(--white);
+            background: transparent; 
+            color: var(--white); /* Forces all text to be pure white initially */
         }
         nav.scrolled {
-            background: rgba(245, 242, 235, 0.95); backdrop-filter: blur(10px);
-            mix-blend-mode: normal; color: var(--text-ink); padding: 18px 60px;
+            background: rgba(245, 242, 235, 0.95); 
+            backdrop-filter: blur(10px);
+            color: var(--text-ink); /* Switches text to dark ink after scrolling */
+            padding: 18px 60px;
             box-shadow: 0 2px 20px rgba(0,0,0,0.05);
         }
-        .logo { font-size: 1.4rem; letter-spacing: -0.02em; font-weight: 600; }
+        .logo { 
+            font-size: 1.4rem; 
+            letter-spacing: -0.02em; 
+            font-weight: 600; 
+            color: inherit; /* Inherits white, then dark ink on scroll */
+        }
         .nav-links { display: flex; gap: 30px; list-style: none; align-items: center; }
         .nav-links a {
-            text-decoration: none; color: inherit; font-size: 0.65rem;
-            text-transform: uppercase; letter-spacing: 0.2em; opacity: 0.8;
-            transition: opacity 0.3s; position: relative;
+            text-decoration: none; 
+            color: inherit; /* Inherits white, then dark ink on scroll */
+            font-size: 0.65rem;
+            text-transform: uppercase; 
+            letter-spacing: 0.2em; 
+            opacity: 0.8;
+            transition: opacity 0.3s; 
+            position: relative;
         }
         .nav-links a:hover { opacity: 1; }
         .nav-links a::after {
@@ -61,7 +74,7 @@
             border-radius: 20px; font-size: 0.6rem !important;
             letter-spacing: 0.15em !important; opacity: 0.9 !important;
         }
-        .nav-instagram:hover { opacity: 1 !important; background: rgba(255,255,255,0.1); }
+        .nav-instagram:hover { opacity: 1 !important; background: rgba(255,255,255,0.15); }
 
         /* --- Hero --- */
         .hero {
