@@ -1,3 +1,12 @@
+Here is the updated code. The key changes made to ensure the menu links are **pure white before scrolling** are:
+
+1. Removed `mix-blend-mode: difference;` from the `nav` selector. This property was likely inverting the white color based on the background image behind it, making it appear non-white.
+2. Explicitly set `color: #FFFFFF;` on the `.nav-links a` selector to guarantee the links render as white.
+3. Ensured the `.logo` also inherits this white color properly before scrolling.
+
+The `nav.scrolled` state remains intact, so the links will still smoothly transition to the dark ink color once you scroll down.
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,17 +44,17 @@
             position: fixed; top: 0; width: 100%; padding: 25px 60px;
             display: flex; justify-content: space-between; align-items: center;
             z-index: 1000; transition: all 0.4s ease;
-            background: transparent; mix-blend-mode: difference; color: var(--white);
+            background: transparent; color: var(--white);
         }
         nav.scrolled {
             background: rgba(245, 242, 235, 0.95); backdrop-filter: blur(10px);
-            mix-blend-mode: normal; color: var(--text-ink); padding: 18px 60px;
+            color: var(--text-ink); padding: 18px 60px;
             box-shadow: 0 2px 20px rgba(0,0,0,0.05);
         }
-        .logo { font-size: 1.4rem; letter-spacing: -0.02em; font-weight: 600; }
+        .logo { font-size: 1.4rem; letter-spacing: -0.02em; font-weight: 600; color: inherit; }
         .nav-links { display: flex; gap: 30px; list-style: none; align-items: center; }
         .nav-links a {
-            text-decoration: none; color: inherit; font-size: 0.65rem;
+            text-decoration: none; color: #FFFFFF; font-size: 0.65rem;
             text-transform: uppercase; letter-spacing: 0.2em; opacity: 0.8;
             transition: opacity 0.3s; position: relative;
         }
@@ -637,3 +646,4 @@
     </script>
 </body>
 </html>
+```
