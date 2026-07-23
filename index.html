@@ -1,11 +1,3 @@
-Here is the updated code. The key changes made to ensure the menu links are **pure white before scrolling** are:
-
-1. Removed `mix-blend-mode: difference;` from the `nav` selector. This property was likely inverting the white color based on the background image behind it, making it appear non-white.
-2. Explicitly set `color: #FFFFFF;` on the `.nav-links a` selector to guarantee the links render as white.
-3. Ensured the `.logo` also inherits this white color properly before scrolling.
-
-The `nav.scrolled` state remains intact, so the links will still smoothly transition to the dark ink color once you scroll down.
-
 ```html
 <!DOCTYPE html>
 <html lang="en">
